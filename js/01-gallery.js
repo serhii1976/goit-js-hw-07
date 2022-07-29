@@ -7,7 +7,7 @@ const refs = {
   galleryDivEl: document.querySelector(".gallery"),
 };
 
-function createGalleryItemsMarkup(galleryItems) {
+const creatMarkupOfGalleryItems = (galleryItems) => {
   return galleryItems
     .map(({ preview, original, description }) => {
       return `<div class="gallery__item">
@@ -22,7 +22,7 @@ function createGalleryItemsMarkup(galleryItems) {
 </div>`;
     })
     .join("");
-}
+};
 
 let instance;
 function onEscKeydown(event) {
@@ -48,8 +48,5 @@ const onGalleryItemClick = (event) => {
   instance.show();
 };
 
-refs.galleryDivEl.insertAdjacentHTML(
-  "beforeend",
-  createGalleryItemsMarkup(galleryItems)
-);
+refs.galleryDivEl.innerHTML = creatMarkupOfGalleryItems(galleryItems);
 refs.galleryDivEl.addEventListener("click", onGalleryItemClick);
